@@ -34,6 +34,51 @@ public class GildedRoseTest {
 		Item itemBrie = items.get(0);
 		assertEquals(11, itemBrie.getQuality());
 	}
+	
+	@Test
+	public void testSulfurasMaxQuality() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 8, 90) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemSulfura = items.get(0);
+		assertEquals(80, itemSulfura.getQuality());
+	}
+	
+	@Test
+	public void testBackPassesMaxQuality() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 10, 60) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemBack = items.get(0);
+		assertEquals(50, itemBack.getQuality());
+	}
+	
+	@Test
+	public void testBackPassesIncresesByTwo() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemBack = items.get(0);
+		assertEquals(0, itemBack.getQuality());
+	}
     
 	@Test
 	public void testUpdateEndOfDay() {
