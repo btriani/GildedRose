@@ -64,7 +64,7 @@ public class GildedRoseTest {
 		Item itemBack = items.get(0);
 		assertEquals(50, itemBack.getQuality());
 	}
-	
+	//
 	@Test
 	public void testBackPassesIncresesByTwo() {
 		// Arrange
